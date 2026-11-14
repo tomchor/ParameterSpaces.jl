@@ -8,8 +8,7 @@ expressions for the solved variables come from [`formula`](@ref).
 
 Built on Symbolics.jl: `symbolic_solve` solves the equations (Nemo for polynomial roots, Groebner
 for systems), and the Jacobian of the equations, at a generic point that satisfies them, tells
-which variables a set of inputs determines. [`front_space`](@ref) is the parameter space of the
-submesoscale-front simulations the package was written for.
+which variables a set of inputs determines.
 """
 module ParameterSpaces
 
@@ -25,13 +24,11 @@ using Random: Xoshiro
 #+++ Exports
 export ParameterSpace, ParameterSolution
 export solve_parameters, closing_inputs, formula, degrees_of_freedom, latexify
-export front_space
 export @variables   # from Symbolics, so that scripts can define a space with `using ParameterSpaces` alone
 #---
 
 #+++ Source files
-include("parameter_space.jl")  # the generic machinery
-include("front_space.jl")      # the parameter space of the front simulations
+include("parameter_space.jl")
 #---
 
 end # module

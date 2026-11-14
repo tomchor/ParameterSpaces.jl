@@ -1,6 +1,6 @@
 name = "ParameterSpaces"
 uuid = "d3af1b9f-2952-41ce-814a-5574a6def624"
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
 Groebner = "0b43b601-686d-58a3-8a1c-6623616c7cd4"
