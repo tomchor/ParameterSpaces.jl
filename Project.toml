@@ -1,0 +1,27 @@
+name = "ParameterSpaces"
+uuid = "d3af1b9f-2952-41ce-814a-5574a6def624"
+version = "0.1.0"
+
+[deps]
+Groebner = "0b43b601-686d-58a3-8a1c-6623616c7cd4"
+Latexify = "23fbe1c1-3f47-55db-b15f-69d7ec21a316"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Nemo = "2edaba10-b0f1-5616-af89-8c11ac63239a"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Symbolics = "0c5d862f-8b57-4792-8d23-62f2024744c7"
+
+[compat]
+Groebner = "0.10.11"
+Latexify = "0.16.12"
+LinearAlgebra = "1.13.0"
+Nemo = "0.56.2"
+Random = "1.11.0"
+Symbolics = "7.49.0"
+Test = "1"
+julia = "1.13"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
