@@ -16,18 +16,30 @@ Pkg.add(url = "https://github.com/tomchor/ParameterSpaces.jl")
 A space is a list of variables and the equations that link them. The Reynolds number of a pipe flow links the velocity U, the diameter D and the kinematic viscosity ν:
 
 ```julia
-using ParameterSpaces
+julia> using ParameterSpaces
 
-@variables U D ν Re
-space = ParameterSpace([U, D, ν, Re], [Re * ν ~ U * D];   # Re = U D / ν
-                       units = (U = "m/s", D = "m", ν = "m^2/s"))
+julia> @variables U D ν Re Pr κ;
 
-solve_parameters(space; U = 2, D = 0.05, ν = 1e-6)[:Re]   # 100000.0
+julia> space = ParameterSpace([U, D, ν, Re, Pr, κ], [Re ~ U * D / ν   # Re = U D / ν
+                                                     Pr ~ ν / κ])     # Pr = ν / κ
+ParameterSpace with 6 variables, 2 equations and 4 degrees of freedom:
+  Re ~ (D*U) / ν
+  Pr ~ ν / κ
 
-sol = solve_parameters(space; Re = 1e5, D = 0.05, ν = 1e-6)
-sol[:U]                      # 2.0
-formula(sol, :U)             # (Re*ν) / D
-latexify(formula(sol, :U))   # the same formula in LaTeX
+julia> solution = solve_parameters(space; Re = 1e3, D = 0.05, ν = 1e-6, Pr = 0.8)
+ParameterSolution: 4 given, 2 solved, 0 undetermined
+  given   U                 2.0
+  given   D                 0.05
+  given   ν                 1.0e-6
+  solved  Re                100000.0
+  given   Pr                0.8
+  solved  κ                 1.25e-6
+
+julia> solution[:U]
+2.0
+
+julia> formula(solution, :U)
+(Re*ν) / D
 ```
 
 Any variable can be given or solved for. The equations must be polynomial in the variables, without division by a variable or radicals, because Symbolics' `symbolic_solve` requires it, so Re = U D / ν is written `Re * ν ~ U * D`.
