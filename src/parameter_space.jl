@@ -576,8 +576,9 @@ function Base.show(io::IO, ::MIME"text/plain", sol::ParameterSolution)
     print(io, "ParameterSolution: $(length(sol.given)) given, $nsolved solved, $(length(sol.undetermined)) undetermined")
     for (j, n) in enumerate(space.names)
         haskey(sol.values, n) || continue
+        units = format_units(space.units[j])
         print(io, "\n  ", haskey(sol.given, n) ? "given " : "solved", "  ", rpad(n, 18),
-                  round(sol.values[n]; sigdigits = 6), " ", format_units(space.units[j]))
+                  round(sol.values[n]; sigdigits = 6), isempty(units) ? "" : " " * units)
     end
     isempty(sol.undetermined) && return
     print(io, "\n  undetermined: ", join(sol.undetermined, ", "))
