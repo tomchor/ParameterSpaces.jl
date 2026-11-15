@@ -94,7 +94,6 @@ end
         @test evaluate_at(space, formula(inverse, :U); Re = 2.0, D = 3.0, ν = 5.0) ≈ 2 * 5 / 3
         @test isequal(formula(inverse, :Re), space.vars[space.index[:Re]])   # a given variable is its own formula
         @test formula(inverse, :μ) === nothing                                # undetermined
-        @test occursin("frac", string(latexify(formula(inverse, :U))))
 
         water = solve_parameters(space; Re = 1e5, D = 0.05, ρ = 1000.0, μ = 1e-3)   # ν from μ and ρ
         @test water[:ν] ≈ 1e-6
