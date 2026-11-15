@@ -16,14 +16,13 @@ module ParameterSpaces
 using Symbolics
 using Nemo: Nemo          # loading it enables symbolic_solve for polynomial roots
 using Groebner: Groebner  # loading it enables symbolic_solve for systems of equations
-using Latexify: latexify
 using LinearAlgebra: rank, nullspace, qr, ColumnNorm, pinv
 using Random: Xoshiro
 #---
 
 #+++ Exports
 export ParameterSpace, ParameterSolution
-export solve_parameters, closing_inputs, formula, degrees_of_freedom, latexify
+export solve_parameters, closing_inputs, formula, degrees_of_freedom
 export @variables   # from Symbolics, so that scripts can define a space with `using ParameterSpaces` alone
 #---
 

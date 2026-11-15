@@ -53,7 +53,7 @@ A ship model that matches both the Reynolds and the Froude number of the full-si
 ship = ParameterSpace([U, L, ν, g, Re, Fr],
                       [Re * ν ~ U * L,        # Re = U L / ν
                        Fr^2 * g * L ~ U^2];   # Fr = U / √(g L)
-                      units = (U = "m/s", L = "m", ν = "m^2/s", g = "m/s^2"))
+                       units = (U = "m/s", L = "m", ν = "m^2/s", g = "m/s^2"))
 
 sol = solve_parameters(ship; Re = 1e7, Fr = 0.3, ν = 1e-6, g = 9.81)
 sol[:U], sol[:L]    # (2.0668, 4.8383)

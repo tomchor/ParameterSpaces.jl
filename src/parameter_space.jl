@@ -685,7 +685,7 @@ end
 
 Closed-form expression of variable `name` in terms of the given variables (and constants such as π),
 or `nothing` if the variable is undetermined or no formula was found. A given variable is its own
-formula. `latexify(formula(sol, name))` gives LaTeX.
+formula.
 """
 function formula(sol::ParameterSolution, name::Symbol)
     haskey(sol.space.index, name) || throw(ArgumentError("$name is not one of the variables"))
